@@ -57,7 +57,7 @@ Destructor syntax: `~ClassName()`
 
 ```cpp
 ~CSensorNode() {
-    delete *m_id;   // Example cleanup
+    delete[] m_id;   // Example cleanup
 }
 ```
 - **Lazy deinitialization**: We may want to delay cleanup. How to implement it? (Search topic: "lazy deinitialization in destructor?")
