@@ -29,7 +29,7 @@ class CSensorNode {
 public:
     // Constructor initializes members, including calling another constructor for m_reading
     CSensorNode(int id, int loc)
-        : m_id(id), m_location(loc),
+        : m_id(&id), m_location(loc),
           m_reading(0, 0, 0),     // explicit constructor call (adds complexity)
           m_reading2(m_reading)   // copy constructor
     {
@@ -43,7 +43,7 @@ public:
     }
 
 private:
-    int m_id;
+    int *m_id;
     int m_location;
     CSensorReading m_reading;
     CSensorReading m_reading2;
@@ -57,7 +57,7 @@ Destructor syntax: `~ClassName()`
 
 ```cpp
 ~CSensorNode() {
-    delete m_id;   // Example cleanup
+    delete *m_id;   // Example cleanup
 }
 ```
 - **Lazy deinitialization**: We may want to delay cleanup. How to implement it? (Search topic: "lazy deinitialization in destructor?")
